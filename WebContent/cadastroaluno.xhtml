@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<ui:composition template="WEB-INF/template/template.xhtml">
+  <ui:define name="conteudo">
+  
+     		<p:wizard widgetVar="alunoswizard" style="width:100%" nextLabel="Próximo" backLabel="Anterior">  		
+        	<p:tab id="personal" title="Pessoal">
+            <p:panel header="Informações Pessoais">
+            	<h:panelGrid columns="3">
+					
+					<h:outputLabel value="Nome do Aluno:" />
+					<h:inputText value="#{alunoBean.aluno.nome}" label="Nome do Aluno"/>
+					<!--  -->
+					<!--  -->		
+					<p:outputLabel for="dtnasc" value="Data de Nascimento:" />
+					<h:inputText id="dtnasc" value="#{alunoBean.aluno.nascimento}" label="Data de Nascimento">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</h:inputText>      			
+        			<!--  -->
+        			<!--  -->
+					
+					<h:outputLabel value="Telefone:" />
+					<h:inputText value="#{telefoneBean.telefone.telefone}" />
+					<p:commandButton value="Adicionar" id="addFone" update="growl" icon="pi pi-plus" action="#{alunoBean.addfone(telefoneBean.telefone.telefone)}" />				
+					<h:outputLabel value="CPF:" />
+					<h:inputText  value="#{alunoBean.aluno.CPF}" label="CPF"/>
+					<!--  -->
+					
+					
+					<h:outputLabel value="RG:" />
+					<h:inputText value="#{alunoBean.aluno.RG}" label="RG"/>
+					<!--  -->
+	  			</h:panelGrid>
+            </p:panel>
+       		</p:tab>
+       		 
+       		 
+       		<p:tab id="address" title="Endereço">
+            <p:panel header="Detalhes do Endereço">
+                <h:panelGrid columns="3">
+                    <h:outputText value="Logradouro:" />
+                    <p:inputText  value="#{alunoBean.aluno.endereco.logradouro}"/>
+                    <!--  -->
+ 
+                    <h:outputText value="Bairro:" />
+                    <p:inputText value="#{alunoBean.aluno.endereco.bairro}" />
+ 					<!--  -->
+ 					
+ 					<h:outputText value="Cidade:" />
+                    <p:inputText value="#{alunoBean.aluno.endereco.cidade}" />
+ 					<!--  -->
+ 					
+                    <h:outputText value="CEP:" />
+                    <p:inputText value="#{alunoBean.aluno.endereco.cep}" />
+                    <!--  -->        
+                    <p:spacer/>          
+                <!--  -->  
+                 <p:commandButton  id="saveBtn" value="Salvar" icon="pi pi-check" process="@this" action="#{alunoBean.salvar}" style="margin:0" />
+                <!--  -->
+                </h:panelGrid>
+            </p:panel> 
+        	</p:tab>   	
+        	
+        	
+         
+     </p:wizard>	 
+ 
+  </ui:define>
+</ui:composition>
+</html>

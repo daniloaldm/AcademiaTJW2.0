@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<style type="text/css">
+.ui-g div {
+	text-align: center;
+	/*     border: 1px solid #fafafa; */
+}
+</style>
+<h:head>
+	<title>Template Web</title>
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+</h:head>
+<h:body>
+	<p:growl id="growl" sticky="true" showDetail="true" />
+	<h:form>
+		<div class="ui-g">
+			<div class="ui-g-12 ui-md-3">
+				<p:graphicImage value="/resources/images/logo.png" height="200" />
+			</div>
+			<div class="ui-g-12 ui-md-8">
+			<p:graphicImage value="/resources/images/banner.jpg" height="200" />
+			
+			</div>
+			
+				
+		</div>
+
+		<div></div>
+		<div class="ui-g">
+			<div class="ui-g-12 ui-md-3">
+				<p:menu>
+					<p:submenu label="Alunos">
+						<p:menuitem value="  Cadastrar" icon="pi pi-save"
+							url="cadastroaluno.jsf" />
+						<p:menuitem value="  Editar Alunos" icon="pi pi-refresh" action="#{alunoBean.buscarAluno}"
+							url="listadealunos.jsf" />
+						
+					</p:submenu>
+					
+				</p:menu>
+			</div>
+
+			<div class="ui-g-12 ui-md-8">
+				<!--          <ui:insert> Serve para delimitar uma área do template que pode ser alterada
+              por páginas que fazem uso desse template. -->
+				<ui:insert name="conteudo">
+      			Conteúdo do Template que pode ser modificado
+    	</ui:insert>
+
+			</div>
+		</div>
+	</h:form>
+</h:body>
+</html>
